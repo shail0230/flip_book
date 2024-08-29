@@ -1,0 +1,315 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-family: sans-serif;
+    background-image:url(bg.jpg);
+    background-repeat:inherit;
+    background-size:100%;
+    overflow-x:visible; /* Prevent horizontal scrolling */
+}
+
+.front img,
+.back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.back img {
+    transform-style: preserve-3d;
+    transform: rotateY(180deg);
+}
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 8px 18px;
+    z-index: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 90px; /* Adjust logo size */
+    height: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px; /* Adjust spacing between links */
+}
+
+.nav-links a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #8A1538; /* Change hover color as needed */
+}
+
+
+/* Book */
+.book {
+    position:absolute;
+    width: 365px;
+    height: 520px;
+    transition: transform 0.1s;
+    z-index: 1; /* Ensure the flipbook is above other content */
+    margin-top: 100px;
+}
+
+.paper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    perspective: 1500px;
+}
+
+.front,
+.back {
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform-origin: left;
+    transition: transform 0.5s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.front {
+    z-index: 1;
+    backface-visibility: hidden;
+    border-left: 0px solid rgb(201, 201, 201);
+}
+
+.back {
+    z-index: 0;
+}
+
+.front-content,
+.back-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-content {
+    transform: rotateY(180deg);
+}
+
+/* Paper flip effect */
+.flipped .front {
+    transform: rotateY(-180deg);
+}
+
+.flipped .back {
+    transform: rotateY(-180deg);
+}
+
+/* Controller Buttons */
+
+
+/* Paper stack order */
+#p1 {
+    z-index: 10;
+}
+#p2 {
+    z-index: 9;
+}
+#p3 {
+    z-index: 8;
+}
+#p4 {
+    z-index: 7;
+}
+#p5 {
+    z-index: 6;
+}
+#p6 {
+    z-index: 5;
+}
+#p7 {
+    z-index: 4;
+}
+#p8 {
+    z-index: 3;
+}
+#p9 {
+    z-index: 2;
+}
+#p10 {
+    z-index: 1;
+}
+
+#prev-btn,
+#next-btn {
+    position:fixed;
+    top: 50%;
+    transform: translateY(50%);
+    padding: 10px;
+    cursor: pointer;
+    border: none; /* Remove border */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    border-radius: 20px;
+    z-index: 2;
+}
+
+#prev-btn {
+    left: 25px; /* Position left button */
+    background-color:rgb(172, 216, 255); /* Light background color */
+    color: black; /* Text color */
+}
+
+#next-btn {
+    right: 25px; /* Position right button */
+    background-color:rgb(172, 216, 255); /* Green background color */
+    color: black; /* Text color */
+}
+
+#prev-btn:hover,
+#next-btn:hover {
+    background-color: #ddd; /* Light gray background on hover */
+    color: black; /* Text color on hover */
+}
+
+#prev-btn {
+    left: 400px;
+}
+
+#next-btn {
+    right: 400px;
+}
+
+@media only screen and (max-width: 1024px) {
+    /* Flipbook Adjustments */
+    .book {
+        width: 250px; /* Adjusted width for tablet */
+        height: 360px; /* Adjusted height for tablet */
+        margin-top: 50px;
+        margin-bottom: 30px;
+        position:sticky; /* Ensure relative positioning */
+    }
+
+    /* Button Font Size */
+    #prev-btn,
+    #next-btn {
+        font-size: 24px;
+        position:static; /* Position relative to .book */
+    }
+
+    /* Adjusted Button Positions */
+    #prev-btn {
+        left: -40px; /* Adjusted left positioning */
+        top: 50%; /* Center vertically */
+        transform: translateY(-50%); /* Adjust for vertical centering */
+    }
+
+    #next-btn {
+        right: -100px; /* Adjusted right positioning */
+        top: 50%; /* Center vertically */
+        transform: translateY(-50%); /* Adjust for vertical centering */
+    }
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 768px) {
+    /* Flipbook Adjustments */
+    .book {
+        width: 200px; /* Adjusted width for mobile */
+        height: 290px; /* Adjusted height for mobile */
+        margin-top: 30px;
+        margin-bottom: 20px;
+        position:sticky;
+    }
+
+    /* Button Font Size */
+    #prev-btn,
+    #next-btn {
+        font-size: 12px; /* Adjusted font size for mobile */
+        position:static;
+    }
+}
+
+/* Mobile Styles for 480px width */
+@media only screen and (max-device-width: 480px) {
+    /* Flipbook Adjustments */
+    .book {
+        width: 260px; /* Adjusted width for smaller devices */
+        height: 370px; /* Adjusted height for smaller devices */
+        margin-top: 20px;
+        margin-bottom: 10px;
+        position:static;
+    }
+
+    /* Button Font Size */
+    #prev-btn,
+    #next-btn {
+        font-size: 24px; /* Adjusted font size for smaller devices */
+        position:static;
+    }
+    #prev-btn {
+        left: 40px;
+    }
+    
+    #next-btn {
+        right: 40px;
+    }
+}
+
+@media only screen and (min-width: 929px) and (max-width: 1045px) {
+    /* Flipbook Adjustments */
+    .book {
+        width: 200px; /* Adjusted width for tablet landscape */
+        height: 290px; /* Adjusted height for tablet landscape */
+        margin-top: 30px;
+        margin-bottom: 20px;
+        position: relative; /* Changed to relative */
+    }
+
+    /* Button Font Size */
+    #prev-btn,
+    #next-btn {
+        font-size: 18px; /* Adjusted font size for tablet landscape */
+        position:relative; /* Positioned absolutely */
+        top: 50%; /* Center vertically */
+        transform: translateY(-50%); /* Adjust for vertical centering */
+    }
+
+    #prev-btn {
+        left: -150px; /* Positioned on the left */
+    }
+
+    #next-btn {
+        right: -150px; /* Positioned on the right */
+    }
+}
+@media screen and (orientation: landscape) {
+    body {
+        transform: rotate(0deg); /* Reset rotation */
+    }
+}

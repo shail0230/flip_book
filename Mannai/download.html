@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+    <script src="https://kit.fontawesome.com/b0f29e9bfe.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <nav class="navbar">
+    <div class="logo">
+      <a href="flip.html">
+        <img src="logo.png" alt="Company Logo">
+      </a>
+    </div>
+</nav>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    label {
+      display:inline-block;
+      margin-bottom: 5px;
+      color: rgb(255, 255, 255);
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    @media only screen and (max-width: 480px) {
+    form {
+        max-width: 95%;
+        padding: 10px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select {
+        padding: 6px;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    button[type="submit"] {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+
+
+  </style>
+</head>
+<body>
+  <h1>Download PDF</h1>
+  <form onsubmit="event.preventDefault(); submitForm();">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+
+    <label for="country">Country:</label>
+    <select id="country" required>
+      <option value="">Select Country</option>
+      <option value="USA">USA</option>
+      <option value="Canada">Canada</option>
+      <option value="India">India</option>
+      <option value="UAE">UAE</option>
+      <option value="Qatar">Qatar</option>
+      <option value="UK">Canada</option>
+      <option value="Germany">Germany</option>
+      <!-- Add more country options as needed -->
+    </select>
+
+    <button type="submit">Download PDF</button>
+  </form>
+
+  <script>
+    function validateEmail() {
+      var email = document.getElementById('email').value;
+      var restrictedDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'rediffmail.com']; // Restricted domains
+
+      var domain = email.substring(email.lastIndexOf('@') + 1);
+      if (restrictedDomains.includes(domain)) {
+        alert('Please use a valid company official email address');
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    function submitForm() {
+      if (validateEmail()) {
+        // Simulate PDF download
+        window.location.href = 'pdf/pdf.pdf'; // Replace with your actual PDF file path
+      }
+    }
+  </script>
+</body>
+</html>
